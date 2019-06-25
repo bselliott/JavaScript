@@ -1,0 +1,56 @@
+<html>
+<body>
+	
+</body>
+
+<script type="text/javascript">
+
+	
+var getLetterGradeFromNumber = function(){
+
+	var score = 0;
+	var letter = "";
+
+		if(score >= 93.0 && score <= 100){
+			letter = "A";
+		}
+		
+		else if(score >= 90.0 && score <= 92.9){
+			letter = "A-";
+		}
+		
+		else if(score >=  87.0 && score <= 89.9){
+			letter = "B+";
+		}
+		
+		else if(score >= 83.0 && score <=86.9 ){
+			letter = "B";
+		}
+		
+		else if(score >= 80.0 && score <= 82.9){
+			letter= "B-";
+		}
+		
+		else if(score >= 70.0 && score <= 79.9){
+			letter = "C";
+		}
+		
+		else if(score >= 60.0 && score <= 69.9){
+			letter = "D";
+		}
+		
+		else if(score >= 0 && score <= 59.9){
+			letter = "F";
+		}
+				
+		else if(score >= 101 || score <= 0){
+		letter = "Please provide a valid score";
+		
+		}
+		console.log('The score provided was: ', score, ' and that is a: ', letter, ' ');
+};
+
+	getLetterGradeFromNumber();
+	
+</script>
+</html>

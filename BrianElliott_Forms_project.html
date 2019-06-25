@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project - Forms - Template</title>
+
+    <link rel="stylesheet" href="https://crolek.github.io/WDV-221/libs/Skeleton-2.0.4/css/normalize.css">
+    <link rel="stylesheet" href="https://crolek.github.io/WDV-221/libs/Skeleton-2.0.4/css/skeleton.css">
+    <style type="text/css">
+        body {
+            background: #f7f7f7;
+        }
+
+        .form-box {
+            max-width: 500px;
+            margin: auto;
+            padding: 50px;
+            background: #ffffff;
+            border: 10px solid #f2f2f2;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        .text-inputs {
+            width: 100%;
+        }
+
+        .error-box {
+            border: red 1px solid;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- sourced from: https://codepen.io/formbucket/pen/wzwyGx -->
+    <div class="form-box">
+        <h1>Simple Signup Form</h1>
+        <div class="error-box hidden">asdfads</div>
+        <form action="/" method="post">
+            <label for="firstname">First Name</label>
+            <input id="firstname" name="firstname" class="text-inputs" type="text">
+
+            <label for="emailaddress">Email</label>
+            <input id="emailaddress" name="emailaddress" class="text-inputs" type="text">
+
+            <label for="messagecontent">Message</label>
+            <textarea id="messagecontent" name="messagecontent" class="text-inputs"></textarea>
+
+            <label>Gender</label>
+            <label for="male">
+                <input name="gender" id="male" value="male" type="radio">
+                <span class="label-body">Male</span>
+            </label>
+            <label for="female">
+                <input name="gender" id="female" value="female" type="radio">
+                <span class="label-body">Female</span>
+            </label>
+
+
+            <input class="button-primary" value="Submit" id="submit" type="submit">
+        </form>
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+
+ var validateName = function(firstnameElement, errorBox){
+    var isNotEmpty = firstnameElement.value;
+    var notNumber = firstnameElement.value;
+ 	if (isNotEmpty != ""){
+ 		console.log("Name: ", firstnameElement.value);
+ 		return true;
+    }else{
+    	errorBox.innerHTML += " Name cannot be empty, " ;
+    	return false;
+    }
+ }
+
+    var validateEmail = function(emailElement, errorBox){
+    	var atsign = emailElement.value.indexOf("@");
+        var period = emailElement.value.indexOf(".");
+    	var isNotEmpty = emailElement.value;
+
+    	if(isNotEmpty != "" && atsign > 0 && period > 0 && period > atsign){
+    		console.log("Email:", emailElement.value);
+    		return true;
+    	}else{
+    		errorBox.innerHTML += "Email cannot be empty or is invalid, ";
+    		return false;
+    	}
+    }
+
+    var messageNotEmpty = function(messageElement, errorBox){
+    	var isNotEmpty = messageElement.value;
+
+    	if(isNotEmpty != "" && messageElement.value.length >= 3 ){
+    		console.log("Message:", messageElement.value);
+    		return true;
+    	}else{
+    		errorBox.innerHTML += "Message cannot be empty and must contain more than 3 letters, ";
+    		return false;
+    	}
+    }
+
+    var radioSelected = function(radioClicked, errorBox){
+    	if(male.checked){
+    		console.log("Value:", male.value);
+   			return true;
+    	}else if(female.checked){
+    		console.log("value:", female.value);
+    			return true;
+    		}else{
+    			errorBox.innerHTML += "Gender must be selected"
+    			return false;
+    	}
+    }
+
+var inputValidation = function(validation){
+	var firstnameElement = document.querySelector("#firstname");
+	var emailElement = document.querySelector("#emailaddress");
+	var messageElement = document.querySelector("#messagecontent");
+	var radioClicked = document.querySelector("#male", "#female");
+	var errorBox = document.querySelector(".error-box");
+	errorBox.innerHTML = "";
+	errorBox.style.display = "initial";
+	
+	validateName(firstnameElement, errorBox);
+	validateEmail(emailElement, errorBox);
+	messageNotEmpty(messageElement, errorBox);
+	radioSelected(radioClicked, errorBox);
+}
+ 
+var submitButton = document.querySelector("#submit");
+submitButton.addEventListener("click", inputValidation);
+</script>
+
+</html>

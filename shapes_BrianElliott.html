@@ -1,0 +1,37 @@
+<html>
+<body>
+</body>	
+<script>
+
+function square(q){
+    var body = document.body;
+    var table  = document.createElement("table");
+    for(var i = 0; i < q; i++){
+        var tr = table.insertRow();
+        for(var j = 0; j < q; j++){
+                var td = tr.insertCell();
+                td.appendChild(document.createTextNode("*"));  
+            }
+    }
+    body.appendChild(table);
+    console.log(table);
+}
+square(10);
+
+function triangle(a) {
+	var body = document.body;
+	var table = document.createElement("table");
+    for (var i = 0; i < a; i++) {
+    	var tr = table.insertRow();
+        for (var j = 0; j <= i; j++) {
+            var td = tr.insertCell();
+            td.appendChild(document.createTextNode("*"));
+        }
+    }
+    body.appendChild(table);
+    console.log(table);
+}
+triangle(9);
+
+</script>
+</html>

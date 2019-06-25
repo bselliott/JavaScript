@@ -1,0 +1,23 @@
+<html>
+<body>
+</body>
+
+<script type="text/javascript">
+
+function palindrome(str) 
+{
+    var str2 = str.split("").reverse().join("");
+
+    if (str2 != str){
+         return console.log("word provided is: " + str + "\n" + str + " is not a palindrome");
+         } else {
+        return console.log("The word provided is: " + str + "\n" + str + " is a palindrome");
+    }
+}   
+
+palindrome("tacocat");
+
+</script>
+</html>
+
+

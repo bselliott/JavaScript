@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div id="assignment">
+    <label for="source">Source number:</label>
+    <input id="source" value="" type="text">
+    <button id="calculate">Calculate</button>
+    <div id="output"></div>
+</div>
+</body>	
+
+<script>
+
+function calculateCircumference() {
+  var circumference = Math.PI * source.value;
+  output.innerHTML += circumference + '</br>';
+}
+
+function calculatePower(){
+    var power = Math.pow(source.value, 3);
+    output.innerHTML += power + '</br>';
+}
+
+function calculateSquareRoot(){
+    var sqtRoot = Math.sqrt(source.value);
+    output.innerHTML += sqtRoot;
+}
+
+var submit = function(submit){
+
+    var source = document.querySelector('#source');
+    var output = document.querySelector("#output"); 
+    calculateCircumference(source);
+    calculatePower(source);
+    calculateSquareRoot(source);
+}
+   
+var validateButton = document.querySelector('#calculate');
+    validateButton.addEventListener('click', submit);
+</script>
+</html>

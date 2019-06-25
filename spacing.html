@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+
+<div id="assignment">
+    <label for="comment">Comment:</label><br>
+    <textarea id="comment" style="width: 500px; height: 200px;">Lorem ipsum dolor sit amet,    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et           dolore magna aliqua.
+Ut enim ad minim veniam,  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit  in voluptate velit    esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim id est laborum.
+    </textarea>
+    <button id="format">Format</button>
+    <br>
+
+    <label for="output1">Output1:</label>
+    <p id="output1"></p>
+    <label for="output2">Output2:</label>
+    <p id="output2"></p>
+</div>
+
+<script type = "text/javascript">
+
+
+var solution1 = function(){
+var sol1NewText = text.replace("   ", " ");
+var output1 = document.querySelector("#output1");
+output1.innerHTML = sol1NewText;
+}
+
+var solution2 = function(){
+var sol2NewText = text.trim();
+var output2 = document.querySelector("#output2");
+output2.innerHTML = sol2NewText;
+}
+
+var submit = function(){
+
+solution1()
+solution2()
+}
+
+var text = document.querySelector("#comment").innerHTML;
+var formatButton = document.querySelector("#format");
+formatButton.addEventListener("click", submit);
+
+</script>	
+</body>
+</html>
+

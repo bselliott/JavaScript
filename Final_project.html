@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project - Final - Example</title>
+
+    <link rel="stylesheet" href="https://crolek.github.io/WDV-221/libs/Skeleton-2.0.4/css/normalize.css">
+    <link rel="stylesheet" href="https://crolek.github.io/WDV-221/libs/Skeleton-2.0.4/css/skeleton.css">
+    <style type="text/css">
+        body {
+            background: #f7f7f7;
+        }
+
+        #final {
+            max-width: 500px;
+            margin: auto;
+            padding: 50px;
+            background: #ffffff;
+            border: 10px solid #f2f2f2;
+        }
+
+        .single-image {
+            height: 100%;
+            width: 100%;
+        }
+
+        #image-wrapper {
+            height: 500px;
+            width: 500px;
+        }
+
+        .error-box {
+            border: red 1px solid;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="final">
+        <div id="image-wrapper"><img class="single-image image-number-0" src="https://crolek.github.io/WDV-221/assignments/imgs/final/garden.jpg"><img class="single-image hidden image-number-1" src="https://crolek.github.io/WDV-221/assignments/imgs/final/stewie.jpg"><img class="single-image hidden image-number-2" src="https://crolek.github.io/WDV-221/assignments/imgs/final/lilsquiggle.jpg"></div>
+        <div class="control-wrapper">
+            <button id="previous-button">Previous</button>
+            <button id="next-button">Next</button>
+        </div>
+        <div id="error-wrapper" class="error-box hidden">
+            <p>Make sure the New Image URL is valid.</p>
+        </div>
+        <div>
+            <label for="new-image">New Image:</label>
+            <input id="new-image" value="http://pbs.twimg.com/profile_images/554344612832092160/WRLmixCH_400x400.png" type="text">
+            <button id="add-new-image">Add New Image</button>
+        </div>
+    </div>
+<script type="text/javascript">
+
+var nextImage = function(imageWrapper){
+
+    if(counter < numImages){
+        document.querySelector(".image-number-" + counter).style.display = "none"
+        counter++;
+        document.querySelector(".image-number-" + counter).style.display = "block";
+    }
+    else{
+        document.querySelector(".image-number-" + counter).style.display = "none"
+        counter = 0;
+        document.querySelector(".image-number-" + counter).style.display = "block";
+        }  
+}
+
+var previousImage = function(imageWrapper){
+
+    if(counter > 0){
+        document.querySelector(".image-number-" + counter).style.display = "none"
+        counter--;
+        document.querySelector(".image-number-" + counter).style.display = "block";
+    }
+    else{
+        document.querySelector(".image-number-" + counter).style.display = "none"
+        counter = numImages;
+        document.querySelector(".image-number-" + counter).style.display = "block";
+        }  
+}
+
+var addImage = function(addImageButton, newImageElement){
+    var newImg = document.createElement("img");
+    newImg.src = newImageElement.value;
+    numImages++;
+    newImg.className = "single-image hidden image-number-" + numImages;
+    document.getElementById("image-wrapper").appendChild(newImg);
+}
+
+var validateNewImage = function(newImageElement, errorBox){
+    var isNotEmpty = newImageElement.value;
+
+    if (isNotEmpty != ""){
+        errorBox.style.display = "none";
+        return true;
+    }else{
+        errorBox.innerHTML += "Make sure the New Image URL is valid." ;
+        return false;
+        }
+    }
+
+    var inputValidation = function(validation){
+         var newImageElement = document.querySelector("#new-image");
+         var errorBox = document.querySelector(".error-box");
+         errorBox.innerHTML = "";
+         errorBox.style.display = "initial";
+
+         validateNewImage(newImageElement, errorBox);
+         addImage(addImageButton, newImageElement);
+    }
+
+    var counter = 0;
+    var numImages = document.querySelector("#image-wrapper").getElementsByClassName("hidden").length;
+
+    var imageWrapper = document.querySelector("#image-wrapper");
+    var nextButton = document.querySelector("#next-button");
+        nextButton.addEventListener("click", nextImage);
+    var previousButton = document.querySelector("#previous-button");
+        previousButton.addEventListener("click", previousImage);
+    var addImageButton = document.querySelector("#add-new-image");
+        addImageButton.addEventListener("click", inputValidation);
+</script>
+</body>
+</html>

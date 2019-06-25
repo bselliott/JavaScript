@@ -1,0 +1,63 @@
+<html>
+<style type="text/css">
+
+	table {
+		
+	}
+
+	td {
+		height: 50px;
+		width: 50px;
+		border: 1px solid;
+	}
+
+   
+</style>
+<body>
+	<div id="example">Inside Content</div>
+	<div id="content">
+		<table>
+			<tr class="row1">
+				<td>1</td>
+				<td>2</td>
+				<td id="first">3</td>
+				<td class="last-column">4</td>
+			</tr>
+			<tr class="row2">
+				<td>5</td>
+				<td id="third">6</td>
+				<td>7</td>
+				<td class="last-column">8</td>
+			</tr>
+			<tr class="row-a">
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td class="last-column">12</td>
+			</tr>
+			<tr id="last-row" class="row-b">
+				<td>13</td>
+				<td id="last">14</td>
+				<td>15</td>
+				<td class="last-column">16</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+<script>
+var E1 = document.getElementById("last-row");
+console.log(E1);
+
+var E2 = document.getElementsByClassName("last-column");
+console.log(E2);
+
+var E4 = document.querySelector("#last");
+console.log(E4);
+
+var E5 = document.querySelector("table");
+console.log(E5);
+
+</script>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<body>
+</body>
+
+<script type="text/javascript">
+
+function palindrome(str) { 
+    var length = str.length;
+    for (var i = 0; i < length / 2; i++) {
+     if (str.charAt(i) != str.charAt(length - i - 1)) {
+            return console.log("The word provided is: " + str + "\n" + str + " is not a palindrome");
+        }
+    }
+    return console.log("The word provided is: " + str + "\n" + str + " is a palindrome");
+
+}
+
+	palindrome("tacocat");
+
+</script>
+</html>
